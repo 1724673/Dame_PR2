@@ -1,4 +1,4 @@
-package spiel;
+package ui;
 
 public class SpielUI {
 
