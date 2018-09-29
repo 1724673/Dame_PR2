@@ -51,6 +51,7 @@ public class SpielbrettTest {
         assertEquals("WEISS", this.spielbrett.getSpielfelder()[5][7].getFarbe());
         assertEquals("WEISS", this.spielbrett.getSpielfelder()[7][7].getFarbe());
 
+        System.out.println(this.spielbrett.printSpielfeld());
     }
 
     @Test
