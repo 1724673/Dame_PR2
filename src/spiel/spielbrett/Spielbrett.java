@@ -79,4 +79,20 @@ public class Spielbrett {
 
         return sb.toString();
     }
+
+    public void deleteAlleSpielfiguren() {
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (this.spielfelder[i][j].getSpielfigur() != null) {
+                    this.spielfelder[i][j].setSpielfigur(null);
+                }
+            }
+        }
+    }
+
+    public void setSpielfigurAufFeld(int reihe, int spalte, FarbEnum farbe, boolean istDame) {
+        this.spielfelder[reihe][spalte].setSpielfigur(new Spielfigur(farbe, istDame));
+    }
+
 }

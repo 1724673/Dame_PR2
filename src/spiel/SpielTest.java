@@ -43,12 +43,10 @@ public class SpielTest {
 
         this.spiel.addSpieler("Weiss", FarbEnum.WEISS);
         this.spiel.addSpieler("Schwarz", FarbEnum.SCHWARZ);
-
         this.spiel.starte();
 
         String[] erlaubteZuege = this.spiel.getErlaubteZuege();
 
         for (String s : erlaubteZuege) System.out.println(s);
-
     }
 }

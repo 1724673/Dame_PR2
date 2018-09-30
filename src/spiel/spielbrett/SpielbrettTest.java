@@ -2,6 +2,7 @@ package spiel.spielbrett;
 
 
 import org.junit.Test;
+import spiel.farbe.FarbEnum;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -72,6 +73,24 @@ public class SpielbrettTest {
         assertEquals("W", this.spielbrett.getSpielfelder()[5][0].getSpielfigur().getFarbe().toString());
         assertEquals("W", this.spielbrett.getSpielfelder()[6][1].getSpielfigur().getFarbe().toString());
         assertEquals("W", this.spielbrett.getSpielfelder()[7][0].getSpielfigur().getFarbe().toString());
+    }
+
+    @Test
+    public void loeschenAllerSpielfigurenGibtLeeresSpielfeld() {
+        this.spielbrett.deleteAlleSpielfiguren();
+        assertNull(this.spielbrett.getSpielfelder()[0][0].getSpielfigur());
+        assertNull(this.spielbrett.getSpielfelder()[1][1].getSpielfigur());
+        assertNull(this.spielbrett.getSpielfelder()[2][0].getSpielfigur());
+        assertNull(this.spielbrett.getSpielfelder()[5][1].getSpielfigur());
+        assertNull(this.spielbrett.getSpielfelder()[6][0].getSpielfigur());
+        assertNull(this.spielbrett.getSpielfelder()[7][1].getSpielfigur());
+    }
+
+    @Test
+    public void einzelneSpielfigurKannGesetztWerden() {
+        this.spielbrett.deleteAlleSpielfiguren();
+        this.spielbrett.setSpielfigurAufFeld(0, 0, FarbEnum.WEISS, false);
+        assertEquals("WEISS", this.spielbrett.getSpielfelder()[0][0].getSpielfigur().getFarbe().toString());
     }
 
 
