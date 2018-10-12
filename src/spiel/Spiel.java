@@ -15,9 +15,14 @@ public class Spiel {
     private Spielbrett spielbrett;
     private Spieler[] spielerListe = new Spieler[2];
     private Historie historie;
+    private boolean istSpielGestartet;
+    private boolean istSpielZuEnde;
+
 
     public Spiel() {
         this.spielbrett = new Spielbrett();
+        this.istSpielGestartet = false;
+        this.istSpielZuEnde = false;
     }
 
     public void addSpieler(String spielerName, FarbEnum farbe) {
@@ -49,7 +54,6 @@ public class Spiel {
     public String[] getErlaubteZuege() {
 
         FarbEnum farbeAmZug = this.spielerAmZug.getFarbe();
-
         return getErlaubteZuegeLokal(farbeAmZug).toArray(String[]::new);
     }
 
@@ -138,6 +142,17 @@ public class Spiel {
         return zugmoeglichkeiten;
 
     }
+    public boolean getSpielGestartet(){return this.istSpielGestartet;}
+    public boolean getIstSpielZuEde(){return this.istSpielZuEnde;}
+    public int getAnzahlSpieler(){
+        if(this.spielerListe[0] == null){
+            return 0;
+        } else if((this.spielerListe[1] == null)){
+            return 1;
+        }
+        return 2;
+    }
+
 
     public String getHistorie() {
         return null;

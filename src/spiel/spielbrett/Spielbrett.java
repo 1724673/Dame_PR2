@@ -94,5 +94,7 @@ public class Spielbrett {
     public void setSpielfigurAufFeld(int reihe, int spalte, FarbEnum farbe, boolean istDame) {
         this.spielfelder[reihe][spalte].setSpielfigur(new Spielfigur(farbe, istDame));
     }
+    public void ziehe(String Spielzug[]){
 
+    }
 }
