@@ -28,8 +28,6 @@ public class Spielbrett {
                 }
             }
         }
-
-
     }
 
     public Spielfeld[][] getSpielfelder() {

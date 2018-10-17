@@ -4,6 +4,7 @@ import spiel.farbe.FarbEnum;
 import spiel.historie.Historie;
 import spiel.spielbrett.Spielbrett;
 import spiel.spieler.Spieler;
+import spiel.utilities.Helfer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ public class Spiel {
     private Historie historie;
     private boolean istSpielGestartet;
     private boolean istSpielZuEnde;
+    private List<String> aktuellMoeglicheZuege;
 
     public Spiel() {
         this.spielbrett = new Spielbrett();
@@ -57,7 +59,7 @@ public class Spiel {
     }
 
 
-    public Map<String, List<String>> getAlleZugmöglichkeiten() {
+    public String[] getAlleZugmöglichkeiten() {
         Map<String, List<String>> map = new HashMap<>();
         for (int x = 0; x < 8; x++) {
             for (int y = ((7 - x) % 2); y < 8; y = y + 2) {
@@ -72,13 +74,25 @@ public class Spiel {
                 }
             }
         }
-        for (String v : map.keySet()) {
-            System.out.println("VON: " + v);
-            for (String n : map.get(v)) {
-                System.out.println("NACH: " + n);
+
+        List<String> formatierteRückgabeListe = new ArrayList<>();
+
+        for (String k : map.keySet()) {
+            for (String v : map.get(k)) {
+                String reiheVon = Helfer.convertReiheInBuchstabe(Integer.parseInt(k.split(" ")[0]));
+                int spalteVon = Integer.parseInt(k.split(" ")[1]) + 1;
+                String reiheNach = Helfer.convertReiheInBuchstabe(Integer.parseInt(v.split(" ")[0]));
+                int spalteNach = Integer.parseInt(v.split(" ")[1]) + 1;
+
+                formatierteRückgabeListe.add("<" + reiheVon + spalteVon + "-" + reiheNach + spalteNach + ">");
+
             }
         }
-        return null;
+
+        this.aktuellMoeglicheZuege = formatierteRückgabeListe;
+
+        String[] erlaubteZuege = formatierteRückgabeListe.toArray(new String[0]);
+        return erlaubteZuege;
     }
 
     public List<String> getZugmöglichkeitenFuerX(int x, int y, boolean istDame) {
