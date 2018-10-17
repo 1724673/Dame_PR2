@@ -7,7 +7,9 @@ import spiel.spielbrett.spielfeld.Spielfeld;
 import spiel.spieler.Spieler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Spiel {
 
@@ -102,6 +104,74 @@ public class Spiel {
 
         return zugmoeglichkeiten;
 
+    }
+    public Map<String,List<String>> getAlleZugmöglichkeiten(){
+        Map<String,List<String>> map = new HashMap<>();
+        System.out.println(this.spielbrett.printSpielfeld());
+        for(int x = 0;x<8;x++){
+            for(int y =((7-x)%2); y<8;y=y+2){
+                if((this.spielbrett.getSpielfelder()[x][y].getSpielfigur()!=null) &&this.spielbrett.getSpielfelder()[x][y].getSpielfigur().getFarbe() == this.spielerAmZug.getFarbe()){
+                    List<String> out= new ArrayList<>();
+                    out.addAll(this.getZugmöglichkeitenFuerX(x,y,this.spielbrett.getSpielfelder()[x][y].getSpielfigur().isIstDame()));
+                    if(out.size()!= 0){
+                        map.put(x+" "+y,out);
+                    }
+                }
+            }
+        }
+        for(String v:map.keySet()){
+            System.out.println("VON: " +v);
+            for(String n:map.get(v)){
+                System.out.println("NACH: " +n);
+            }
+        };
+        return null;
+    }
+    public List<String> getZugmöglichkeitenFuerX(int x,int y,boolean istDame){
+        List<String> out= new ArrayList<>();
+        int vorne = 1;
+        if(this.spielerAmZug.getFarbe() == FarbEnum.WEISS){
+            vorne = -1;
+        }
+        if(this.spielbrett.getSpielfelder()[x][y].getSpielfigur() != null){
+            if(x+vorne >=0 && x+vorne <=7 && y+1 >=0 &&y+1<=7) {
+                if (this.spielbrett.getSpielfelder()[x + vorne][y + 1].getSpielfigur() == null) {
+                    out.add((x + vorne) + " " + (y + 1));
+                }
+            }
+            if(x+vorne >=0 && x+vorne <=7 && y-1 >=0 &&y-1<=7) {
+                if (this.spielbrett.getSpielfelder()[x + vorne][y - 1].getSpielfigur() == null) {
+                    out.add((x + vorne) + " " + (y - 1));
+                }
+            }
+        }
+        if(x+2*vorne >=0 && x+2*vorne <=7 && y+2 >=0 &&y+2<=7) {
+            if ((this.spielbrett.getSpielfelder()[x + vorne][y + 1].getSpielfigur() != null) &&
+                    (!this.spielbrett.getSpielfelder()[x + vorne][y + 1].getSpielfigur().getFarbe().equals(this.spielerAmZug.getFarbe())) &&
+                    (this.spielbrett.getSpielfelder()[x + (2 * vorne)][y + 2].getSpielfigur() == null)) {
+                List<String> toAdd= new ArrayList<>();
+                toAdd = this.getZugmöglichkeitenFuerX((x + 2 * vorne), (y + 2), false);
+                if(toAdd.size()==0){
+                    out.add((x + 2 * vorne)+ " "+(y + 2));
+                }else{
+                    out.addAll(toAdd);
+                }
+            }
+        }
+        if(x+2*vorne >=0 && x+2*vorne <=7 && y-2 >=0 &&y-2<=7) {
+            if ((this.spielbrett.getSpielfelder()[x + vorne][y - 1].getSpielfigur() != null) &&
+                    (!this.spielbrett.getSpielfelder()[x + vorne][y - 1].getSpielfigur().getFarbe().equals(this.spielerAmZug.getFarbe())) &&
+                    (this.spielbrett.getSpielfelder()[x + (2 * vorne)][y - 2].getSpielfigur() == null)) {
+                List<String> toAdd= new ArrayList<>();
+                toAdd = this.getZugmöglichkeitenFuerX((x + 2 * vorne), (y - 2), false);
+                if(toAdd.size()==0){
+                    out.add((x + 2 * vorne)+ " "+(y - 2));
+                }else{
+                    out.addAll(toAdd);
+                }
+            }
+        }
+        return out;
     }
 
     private List<String> getWeisseZugmoeglichkeiten(Spielbrett aktuellesSpielbrett) {

@@ -8,13 +8,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class SpielUI {
-    private Spiel spiel = new Spiel();
+    public Spiel spiel = new Spiel();
     private ArrayList<Object> options = new ArrayList<>();
 
     public static void main(String[] args) {
         SpielUI main = new SpielUI();
         BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
         System.out.println(main.getWelcomeMessage());
+
         while(true){
             System.out.println(main.getMenueElemente());
             try {

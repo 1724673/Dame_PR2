@@ -44,6 +44,9 @@ public class SpielTest {
         this.spiel.addSpieler("Weiss", FarbEnum.WEISS);
         this.spiel.addSpieler("Schwarz", FarbEnum.SCHWARZ);
         this.spiel.starte();
+        System.out.println("yeeet");
+        this.spiel.getAlleZugmöglichkeiten();
+        System.out.println("yeeet");
 
         String[] erlaubteZuege = this.spiel.getErlaubteZuege();
 

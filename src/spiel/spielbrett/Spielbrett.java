@@ -57,12 +57,12 @@ public class Spielbrett {
             for (int j = 0; j < 8; j++) {
                 if (this.spielfelder[i][j].getSpielfigur() != null && this.spielfelder[i][j]
                         .getSpielfigur().getFarbe().toString().equals("SCHWARZ")) {
-                    if (j == 7) sb.append("X").append("\n\n");
-                    else sb.append("X").append("\t\t");
+                    if (j == 7) sb.append("○").append("\n\n");
+                    else sb.append("○").append("\t\t");
                 } else if (this.spielfelder[i][j].getSpielfigur() != null && this.spielfelder[i][j]
                         .getSpielfigur().getFarbe().toString().equals("WEISS")) {
-                    if (j == 7) sb.append("O").append("\n\n");
-                    else sb.append("O").append("\t\t");
+                    if (j == 7) sb.append("●").append("\n\n");
+                    else sb.append("●").append("\t\t");
                 } else {
                     if (this.spielfelder[i][j].getSpielfigur() == null && this.spielfelder[i][j].getFarbe().equals("SCHWARZ")) {
                         if (j == 7) sb.append("S").append("\n\n");

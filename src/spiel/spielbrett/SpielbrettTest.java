@@ -65,14 +65,14 @@ public class SpielbrettTest {
         assertNull(this.spielbrett.getSpielfelder()[6][0].getSpielfigur());
 
         // Startfelder SCHWARZ
-        assertEquals("S", this.spielbrett.getSpielfelder()[0][1].getSpielfigur().getFarbe().toString());
-        assertEquals("S", this.spielbrett.getSpielfelder()[1][0].getSpielfigur().getFarbe().toString());
-        assertEquals("S", this.spielbrett.getSpielfelder()[2][1].getSpielfigur().getFarbe().toString());
+        assertEquals("SCHWARZ", this.spielbrett.getSpielfelder()[0][1].getSpielfigur().getFarbe().toString());
+        assertEquals("SCHWARZ", this.spielbrett.getSpielfelder()[1][0].getSpielfigur().getFarbe().toString());
+        assertEquals("SCHWARZ", this.spielbrett.getSpielfelder()[2][1].getSpielfigur().getFarbe().toString());
 
         // Startfelder WEISS
-        assertEquals("W", this.spielbrett.getSpielfelder()[5][0].getSpielfigur().getFarbe().toString());
-        assertEquals("W", this.spielbrett.getSpielfelder()[6][1].getSpielfigur().getFarbe().toString());
-        assertEquals("W", this.spielbrett.getSpielfelder()[7][0].getSpielfigur().getFarbe().toString());
+        assertEquals("WEISS", this.spielbrett.getSpielfelder()[5][0].getSpielfigur().getFarbe().toString());
+        assertEquals("WEISS", this.spielbrett.getSpielfelder()[6][1].getSpielfigur().getFarbe().toString());
+        assertEquals("WEISS", this.spielbrett.getSpielfelder()[7][0].getSpielfigur().getFarbe().toString());
     }
 
     @Test
