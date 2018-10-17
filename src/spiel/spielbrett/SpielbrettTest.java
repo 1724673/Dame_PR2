@@ -27,8 +27,8 @@ public class SpielbrettTest {
 
     @Test
     public void spielfeldIdEntsprichtKoordinate() {
-        assertEquals("11", this.spielbrett.getSpielfelder()[0][0].getId());
-        assertEquals("88", this.spielbrett.getSpielfelder()[7][7].getId());
+        assertEquals("A1", this.spielbrett.getSpielfelder()[0][0].getId());
+        assertEquals("H8", this.spielbrett.getSpielfelder()[7][7].getId());
     }
 
     @Test
