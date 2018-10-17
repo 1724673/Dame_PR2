@@ -39,17 +39,13 @@ public class SpielTest {
     }
 
     @Test
-    public void erlaubteZuegeTemp() {
+    public void erlaubteZuegeFuerStartSituationKorrekt() {
+        this.spiel.addSpieler("weiss", FarbEnum.WEISS);
+        this.spiel.addSpieler("schwarz", FarbEnum.SCHWARZ);
 
-        this.spiel.addSpieler("Weiss", FarbEnum.WEISS);
-        this.spiel.addSpieler("Schwarz", FarbEnum.SCHWARZ);
         this.spiel.starte();
-        System.out.println("yeeet");
-        this.spiel.getAlleZugmöglichkeiten();
-        System.out.println("yeeet");
 
-        String[] erlaubteZuege = this.spiel.getErlaubteZuege();
+        spiel.getAlleZugmöglichkeiten();
 
-        for (String s : erlaubteZuege) System.out.println(s);
     }
 }

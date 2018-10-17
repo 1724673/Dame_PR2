@@ -14,6 +14,7 @@ public class SpielbrettTest {
     @org.junit.Before
     public void setUp() {
         this.spielbrett = new Spielbrett();
+        this.spielbrett.intialisiereSpielfiguren();
     }
 
     @Test
@@ -57,6 +58,7 @@ public class SpielbrettTest {
 
     @Test
     public void spielfigurenSindKorrektGesetzt() {
+
         // Leere Startreihen mit weissen Feldern
         assertNull(this.spielbrett.getSpielfelder()[0][0].getSpielfigur());
         assertNull(this.spielbrett.getSpielfelder()[2][0].getSpielfigur());
